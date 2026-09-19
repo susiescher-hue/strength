@@ -37,7 +37,14 @@ export default function App() {
       </header>
 
       <div className="sticky-day">
-        <DayToggle value={store.activeDay} onChange={store.setActiveDay} />
+        <DayToggle
+          value={store.activeDay}
+          onChange={(day) => {
+            setFlash(false)
+            store.setActiveDay(day)
+            window.scrollTo({ top: 0, behavior: 'auto' })
+          }}
+        />
         <p className="day-focus">{program.focus}</p>
       </div>
 
