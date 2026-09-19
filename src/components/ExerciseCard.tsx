@@ -129,7 +129,7 @@ export function ExerciseCard({
             rows={2}
             value={note}
             onChange={(event) => onNote(event.target.value)}
-            placeholder="How it felt, swap used, hotel notes…"
+            placeholder="How it felt, swap used, home notes…"
           />
         </label>
       ) : (

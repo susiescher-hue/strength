@@ -1,10 +1,10 @@
 {
-  "name": "Strength · Susie Scher",
-  "short_name": "Strength",
+  "name": "SUSIE STAYS STRONG",
+  "short_name": "SUSIE STAYS STRONG",
   "start_url": "/strength/",
   "scope": "/strength/",
   "display": "standalone",
   "background_color": "#12141a",
   "theme_color": "#12141a",
-  "description": "Day A / Day B strength tracker"
+  "description": "Day A / Day B strength tracker for gym and home"
 }

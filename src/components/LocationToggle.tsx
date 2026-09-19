@@ -5,7 +5,7 @@ interface LocationToggleProps {
   onChange: (location: LocationId) => void
 }
 
-const OPTIONS: LocationId[] = ['bodyspace', 'hotel', 'home']
+const OPTIONS: LocationId[] = ['gym', 'home']
 
 export function LocationToggle({ value, onChange }: LocationToggleProps) {
   return (

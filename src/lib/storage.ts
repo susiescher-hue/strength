@@ -45,7 +45,7 @@ export function defaultState(): AppState {
   return {
     version: 1,
     activeDay: 'A',
-    location: 'bodyspace',
+    location: 'gym',
     days: {
       A: defaultDayState('A'),
       B: defaultDayState('B'),
@@ -84,10 +84,7 @@ export function loadState(): AppState {
     if (!raw) return defaultState()
     const parsed = JSON.parse(raw) as Partial<AppState>
     const activeDay = parsed.activeDay === 'B' ? 'B' : 'A'
-    const location =
-      parsed.location === 'hotel' || parsed.location === 'home'
-        ? parsed.location
-        : 'bodyspace'
+    const location = parsed.location === 'home' ? 'home' : 'gym'
     return {
       version: 1,
       activeDay,

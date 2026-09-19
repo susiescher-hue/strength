@@ -22,10 +22,10 @@ export default function App() {
   return (
     <div className="app">
       <header className="top">
-        <p className="brand-kicker">Susie Scher · Body Space Fitness NYC</p>
-        <h1>strength</h1>
+        <p className="brand-kicker">Your sessions · gym or home</p>
+        <h1>SUSIE STAYS STRONG</h1>
         <p className="lede">
-          Two days. Gym, hotel, or home. Check a set, change a weight, keep going.
+          Two days. Gym or home. Check a set, change a weight, keep going.
         </p>
         <p className="last-line">
           <span>
