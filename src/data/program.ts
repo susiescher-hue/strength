@@ -228,7 +228,7 @@ export const DAYS: Record<DayId, DayProgram> = {
           estimated: false,
           alternate: '30 lb each when 25 is solid for 8',
         },
-        help: 'Slight incline. Start with the DBs at the shoulders, wrists stacked, then press up and a little together. Lower on a slow count. Last two reps should grind. Flat bench is fine if there is no incline.',
+        help: 'Slight incline. Start with the DBs at the shoulders, wrists stacked, then press up and a little together. Lower on a slow count. Last two reps should grind — flat bench is fine if there is no incline.',
         cue: 'Last 2 reps should grind. Flat bench is fine if there is no incline.',
         demoUrl: 'https://www.youtube.com/watch?v=8iPEnn-ltC8',
         swaps: {
@@ -461,7 +461,7 @@ export const DAYS: Record<DayId, DayProgram> = {
         scheme: { kind: 'reps', sets: 3, reps: 10 },
         eachSide: true,
         weight: { value: 'BW', estimated: false },
-        help: 'Stand on one foot. Hold a wall or kettlebell for balance. Rise onto the ball of the foot, pause, then lower slow. Full range — don’t bounce. Switch sides.',
+        help: 'Stand on one foot and hold a wall or kettlebell for balance. Rise onto the ball of the foot, pause, then lower slow. Full range — don’t bounce. Switch sides.',
         cue: 'Slow lower. Hold a wall or kettlebell for balance.',
         demoUrl: 'https://www.youtube.com/watch?v=ElcvJ0kjt6c',
       },
@@ -472,7 +472,7 @@ export const DAYS: Record<DayId, DayProgram> = {
         scheme: { kind: 'reps', sets: 3, reps: 8 },
         eachSide: true,
         weight: { value: 'BW', estimated: false },
-        help: 'On your back, knees over hips, arms to the ceiling. Press the low back down, then reach one arm and the opposite leg out. Only go as far as the back stays glued. Switch sides. Slow wins.',
+        help: 'On your back, knees over hips, arms to the ceiling. Press the low back down, then reach one arm and the opposite leg out. Only go as far as the back stays glued. Switch sides — slow wins.',
         demoUrl: 'https://www.youtube.com/watch?v=4XLEnwUr1d8',
       },
       {
