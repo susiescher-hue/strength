@@ -82,11 +82,11 @@ button {
 .top h1 {
   margin: 4px 0 6px;
   font-family: Fraunces, Georgia, serif;
-  font-size: 2.55rem;
-  font-weight: 500;
+  font-size: 1.85rem;
+  font-weight: 620;
   font-style: italic;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 .lede {
@@ -152,7 +152,7 @@ button {
 
 .location-toggle {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 6px;
   padding: 5px;
   border-radius: 16px;

@@ -1,10 +1,10 @@
-# Strength
+# SUSIE STAYS STRONG
 
 A phone-friendly Day A / Day B workout tracker for **Susie Scher**.
 
 **On your phone (no install):** [https://susiescher-hue.github.io/strength/](https://susiescher-hue.github.io/strength/)
 
-Open that link at Body Space Fitness (NYC), or at a hotel / home gym. Two sessions only. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
+Open that link at a regular gym or at home. Two sessions only. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
 
 If the link 404s the first time, enable Pages once: repo **Settings → Pages → Source: GitHub Actions**. This repo is private today — if GitHub blocks Pages, make the repo **public** (Settings → General → Danger zone) so the phone URL can go live. The site itself is still just the workout tracker.
 
@@ -13,7 +13,7 @@ If the link 404s the first time, enable Pages once: repo **Settings → Pages �
 - **Day A** — heavy upper, squat, and core. Working sets of ~8.
 - **Day B** — hinge, single-leg / lateral work for running and ski season, and pull
 
-Set **Where am I?** to Body Space, Hotel gym, or Home. Hotel/Home shows the swap on the card (band instead of cable, DB instead of KB, skip SkiErg, and so on). The day stays on screen.
+Set **Where am I?** to **Gym** or **Home**. Home shows the swap on the card (band instead of cable, DB instead of KB, skip SkiErg/rower, and so on). The day stays on screen. This app is for her own gym or home sessions — not Body Space trainer sessions.
 
 This block: ~4 weeks / ~8 sessions, then progress loads.
 
@@ -57,7 +57,7 @@ Then open `http://localhost:5173/strength/` (the app is built for GitHub Pages a
 
 1. Add the page to your home screen if you like (it is set up as a simple standalone web app).
 2. Toggle **Day A** or **Day B**.
-3. Set **Where am I?** so hotel/home swaps show up.
+3. Set **Where am I?** to Gym or Home so home swaps show up.
 4. Open the warm-up if you want it; skip foam rolling when you are short on time.
 5. Tap a set when it is done. Tap the big weight field to change the load.
 6. **Mark Day complete** when you are finished. Use **Reset sets** next time — weights and notes stay.

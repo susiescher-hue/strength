@@ -1,5 +1,5 @@
 export type DayId = 'A' | 'B'
-export type LocationId = 'bodyspace' | 'hotel' | 'home'
+export type LocationId = 'gym' | 'home'
 
 export type Scheme =
   | { kind: 'reps'; sets: number; reps: number }
@@ -28,7 +28,7 @@ export interface Exercise {
   cue?: string
   optional?: boolean
   demoUrl?: string
-  swaps?: Partial<Record<Exclude<LocationId, 'bodyspace'>, string>>
+  swaps?: { home: string }
 }
 
 export interface WarmupItem {
@@ -54,8 +54,7 @@ export const SECTION_LABEL: Record<Section, string> = {
 }
 
 export const LOCATION_LABEL: Record<LocationId, string> = {
-  bodyspace: 'Body Space',
-  hotel: 'Hotel gym',
+  gym: 'Gym',
   home: 'Home',
 }
 
@@ -63,8 +62,8 @@ export function locationSwap(
   exercise: Exercise,
   location: LocationId,
 ): string | null {
-  if (location === 'bodyspace') return null
-  return exercise.swaps?.[location] ?? null
+  if (location !== 'home') return null
+  return exercise.swaps?.home ?? null
 }
 
 export function setCount(scheme: Scheme): number {
@@ -134,7 +133,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         weight: { value: 'BW', estimated: false },
         cue: 'Anti-extension. Ribs down. Add a light plate on the hips when 8 is easy.',
         swaps: {
-          hotel: 'Towel slide on the floor, or ab wheel if the hotel has one.',
           home: 'Towel slide, or extra hollow holds if you have no wheel.',
         },
       },
@@ -148,7 +146,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         weight: { value: 'Medium cable / band', estimated: true },
         cue: 'Anti-rotation. Pick a load that makes the last 2 reps a fight.',
         swaps: {
-          hotel: 'Band from a door or rack. No cable needed.',
           home: 'Band from a door. Stand if kneeling is awkward.',
         },
       },
@@ -165,7 +162,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         },
         cue: 'Hard hip snap. If 16 kg feels easy, go 20 kg next session.',
         swaps: {
-          hotel: 'Use a KB if they have one. If not: two-hand DB swing, heaviest DB you can snap.',
           home: 'KB if you have it. Else two-hand DB swing, or a backpack swing.',
         },
       },
@@ -182,7 +178,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         },
         cue: 'Working sets of 8 — not a pump pyramid. Add load when 12 kg is no longer hard.',
         swaps: {
-          hotel: 'Heaviest goblet DB they have. Front-rack 2 DBs if you can.',
           home: 'Goblet DB or a packed backpack. Same 4 × 8.',
         },
       },
@@ -195,7 +190,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         weight: { value: 'Heavy stack', estimated: true },
         cue: 'A hard 8. If you could do 12, the stack is too light.',
         swaps: {
-          hotel: 'Band-assisted pull-up, or band pulldown from a door. 4 × 8.',
           home: 'Band pulldown from a door, or band-assisted pull-up.',
         },
       },
@@ -212,7 +206,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         },
         cue: 'Last 2 reps should grind. Flat bench is fine if there is no incline.',
         swaps: {
-          hotel: 'Flat DB press if no incline bench. Floor press if no bench.',
           home: 'Floor press with DBs. Same 4 × 8.',
         },
       },
@@ -230,7 +223,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         },
         cue: 'Chest supported or hand-on-bench. Pull to the hip. Own the last reps.',
         swaps: {
-          hotel: 'DB row, or cable row if that is the heavier option.',
           home: 'DB row, backpack row, or band row. Load it.',
         },
       },
@@ -247,7 +239,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         },
         cue: 'Strict. If 15 lb flies, go 20 next time.',
         swaps: {
-          hotel: 'Standing if no bench. Same DBs.',
           home: 'Standing OH press with DBs, or one KB press each side.',
         },
       },
@@ -259,7 +250,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         weight: { value: 'Light band', estimated: true },
         demoUrl: 'https://www.youtube.com/watch?v=qi2y-eI_kuI',
         swaps: {
-          hotel: 'Band pull-aparts. Light cable face pulls if they have a cable.',
           home: 'Band pull-aparts. Same Demo.',
         },
       },
@@ -280,7 +270,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         rest: '0:30',
         weight: { value: 'Easy–moderate', estimated: true },
         swaps: {
-          hotel: 'Skip, or brisk 3 × 90s walk / march.',
           home: 'Skip, or 3 × 90s marching in place.',
         },
       },
@@ -315,7 +304,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         scheme: { kind: 'reps', sets: 3, reps: 8 },
         weight: { value: 'Cable or band', estimated: true },
         swaps: {
-          hotel: 'Band straight-arm pulldown from a door or rack.',
           home: 'Band straight-arm pulldown from a door.',
         },
       },
@@ -335,7 +323,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         scheme: { kind: 'repsRange', sets: 3, repsMin: 3, repsMax: 5 },
         weight: { value: '12 kg', estimated: false },
         swaps: {
-          hotel: 'DB goblet clean to squat if no KB.',
           home: 'DB goblet clean to squat, or skip the clean and goblet squat the same load.',
         },
       },
@@ -348,7 +335,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         weight: { value: 'BW or band', estimated: true },
         cue: 'One narrow + one wide. Split the total (10 = 5 each). Lat pulldown if needed.',
         swaps: {
-          hotel: 'Lat pulldown or band-assisted pull-up. Same 10, 8, 6.',
           home: 'Band pulldown from a door, or band-assisted pull-up.',
         },
       },
@@ -364,7 +350,6 @@ export const DAYS: Record<DayId, DayProgram> = {
           alternate: 'Barbell 80 lb',
         },
         swaps: {
-          hotel: 'Single KB deadlift, or DB/suitcase deadlift. Barbell 80 lb if they have a bar.',
           home: 'Single KB or two DBs. Same 3 × 8–10.',
         },
       },
@@ -376,7 +361,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         rest: '1:00',
         weight: { value: '16–20 kg', estimated: true },
         swaps: {
-          hotel: 'DB Romanian deadlift if no second KB.',
           home: 'DB RDL, or one KB RDL. Same 3 × 8.',
         },
       },
@@ -398,7 +382,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         rest: '1:00',
         weight: { value: '12 kg', estimated: false },
         swaps: {
-          hotel: 'Chair or stair step-up, or RFESS. ~12–20 lb DBs if no 12 kg KB.',
           home: 'Stair step-up or RFESS on a chair. DB or KB.',
         },
       },
@@ -410,7 +393,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         rest: '1:00',
         weight: { value: '25 lb', estimated: false },
         swaps: {
-          hotel: 'DB row or cable row if no TRX.',
           home: 'DB row, backpack row, or band row.',
         },
       },
@@ -442,7 +424,6 @@ export const DAYS: Record<DayId, DayProgram> = {
         rest: '0:30',
         weight: { value: 'Easy–moderate', estimated: true },
         swaps: {
-          hotel: 'Skip SkiErg. March 3 × 90s or band pulls.',
           home: 'Skip. March 3 × 90s or band pulls.',
         },
       },
