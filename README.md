@@ -2,7 +2,11 @@
 
 A phone-friendly Day A / Day B workout tracker for **Susie Scher**.
 
-Open it on your phone at Body Space Fitness (NYC), or at a hotel / home gym. Two sessions only. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
+**On your phone (no install):** [https://susiescher-hue.github.io/strength/](https://susiescher-hue.github.io/strength/)
+
+Open that link at Body Space Fitness (NYC), or at a hotel / home gym. Two sessions only. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
+
+If the link 404s the first time, enable Pages once: repo **Settings → Pages → Source: GitHub Actions**. This repo is private today — if GitHub blocks Pages, make the repo **public** (Settings → General → Danger zone) so the phone URL can go live. The site itself is still just the workout tracker.
 
 ## What it tracks
 
@@ -22,7 +26,7 @@ npm install
 npm run dev
 ```
 
-Then open the local URL Vite prints (usually `http://localhost:5173`) on your laptop or phone.
+Then open `http://localhost:5173/strength/` (the app is built for GitHub Pages at `/strength/`).
 
 | Command | What it does |
 | --- | --- |

@@ -1,7 +1,8 @@
 {
   "name": "Strength · Susie Scher",
   "short_name": "Strength",
-  "start_url": "/",
+  "start_url": "/strength/",
+  "scope": "/strength/",
   "display": "standalone",
   "background_color": "#12141a",
   "theme_color": "#12141a",
