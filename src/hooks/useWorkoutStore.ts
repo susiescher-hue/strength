@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { DAYS, type DayId } from '../data/program'
+import { DAYS, type DayId, type LocationId } from '../data/program'
 import {
   countProgress,
   defaultState,
@@ -47,6 +47,10 @@ export function useWorkoutStore() {
 
   const setActiveDay = useCallback((day: DayId) => {
     setState((prev) => ({ ...prev, activeDay: day }))
+  }, [])
+
+  const setLocation = useCallback((location: LocationId) => {
+    setState((prev) => ({ ...prev, location }))
   }, [])
 
   const toggleWarmupOpen = useCallback(() => {
@@ -137,7 +141,9 @@ export function useWorkoutStore() {
     progress,
     lastCompletedA: state.days.A.lastCompleted,
     lastCompletedB: state.days.B.lastCompleted,
+    location: state.location,
     setActiveDay,
+    setLocation,
     toggleWarmupOpen,
     toggleWarmupItem,
     toggleSet,

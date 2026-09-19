@@ -1,4 +1,4 @@
-import { DAYS, setCount, type DayId } from '../data/program'
+import { DAYS, setCount, type DayId, type LocationId } from '../data/program'
 
 export const STORAGE_KEY = 'susie-strength-v1'
 
@@ -14,6 +14,7 @@ export interface DayState {
 export interface AppState {
   version: 1
   activeDay: DayId
+  location: LocationId
   days: Record<DayId, DayState>
 }
 
@@ -44,6 +45,7 @@ export function defaultState(): AppState {
   return {
     version: 1,
     activeDay: 'A',
+    location: 'bodyspace',
     days: {
       A: defaultDayState('A'),
       B: defaultDayState('B'),
@@ -82,9 +84,14 @@ export function loadState(): AppState {
     if (!raw) return defaultState()
     const parsed = JSON.parse(raw) as Partial<AppState>
     const activeDay = parsed.activeDay === 'B' ? 'B' : 'A'
+    const location =
+      parsed.location === 'hotel' || parsed.location === 'home'
+        ? parsed.location
+        : 'bodyspace'
     return {
       version: 1,
       activeDay,
+      location,
       days: {
         A: mergeDay('A', parsed.days?.A),
         B: mergeDay('B', parsed.days?.B),

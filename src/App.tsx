@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { DayToggle } from './components/DayToggle'
 import { ExerciseCard } from './components/ExerciseCard'
+import { LocationToggle } from './components/LocationToggle'
 import { SessionBar } from './components/SessionBar'
 import { WarmupCard } from './components/WarmupCard'
 import { useWorkoutStore } from './hooks/useWorkoutStore'
@@ -37,6 +38,7 @@ export default function App() {
       </header>
 
       <div className="sticky-day">
+        <LocationToggle value={store.location} onChange={store.setLocation} />
         <DayToggle
           value={store.activeDay}
           onChange={(day) => {
@@ -65,15 +67,18 @@ export default function App() {
             flags={dayState.sets[exercise.id] ?? []}
             weight={dayState.weights[exercise.id] ?? exercise.weight?.value ?? ''}
             note={dayState.notes[exercise.id] ?? ''}
+            location={store.location}
             onToggleSet={(setIndex) => store.toggleSet(exercise.id, setIndex)}
             onWeight={(value) => store.setWeight(exercise.id, value)}
             onNote={(value) => store.setNote(exercise.id, value)}
           />
         ))}
+        <p className="block-note">
+          This block: ~4 weeks / ~8 sessions, then progress loads.
+        </p>
         <p className="foot-note">
-          Seeded from current baselines. Anything marked estimate is a starting
-          guess — tap the weight and make it yours. No login; this phone keeps
-          the session in local storage.
+          Tap a weight to change it — it stays on this phone. Estimates are
+          starting guesses. No login.
         </p>
       </main>
 
