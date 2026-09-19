@@ -30,9 +30,10 @@ export function ExerciseCard({
   onWeight,
   onNote,
 }: ExerciseCardProps) {
-  const [noteOpen, setNoteOpen] = useState(Boolean(note))
+  const [noteOpen, setNoteOpen] = useState(false)
   const count = setCount(exercise.scheme)
   const done = flags.slice(0, count).filter(Boolean).length
+  const showNote = noteOpen || note.length > 0
 
   return (
     <article className={`card exercise ${exercise.optional ? 'is-optional' : ''}`}>
@@ -99,7 +100,7 @@ export function ExerciseCard({
       {exercise.cue && <p className="cue">{exercise.cue}</p>}
       {exercise.swap && <p className="swap">{exercise.swap}</p>}
 
-      {noteOpen ? (
+      {showNote ? (
         <label className="note">
           <span>Note</span>
           <textarea

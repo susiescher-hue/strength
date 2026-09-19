@@ -66,13 +66,8 @@ button {
 }
 
 .top {
-  position: sticky;
-  top: 0;
-  z-index: 4;
-  margin: -18px -16px 18px;
-  padding: calc(18px + var(--safe-top)) 16px 14px;
-  background: linear-gradient(180deg, #12141ae6 70%, #12141a00);
-  backdrop-filter: blur(14px);
+  margin: 0 0 8px;
+  padding: 4px 2px 0;
 }
 
 .brand-kicker {
@@ -112,7 +107,7 @@ button {
 }
 
 .day-toggle button {
-  min-height: 64px;
+  min-height: 56px;
   border: 0;
   border-radius: 14px;
   background: transparent;
@@ -151,10 +146,21 @@ button {
   font-size: 0.78rem;
 }
 
+.sticky-day {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  margin: 0 -16px 14px;
+  padding: 8px 16px 10px;
+  background: linear-gradient(180deg, #12141af5 72%, #12141acc 100%);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
 .day-focus {
-  margin: 0 0 12px;
+  margin: 8px 2px 0;
   color: var(--soft);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 
 .card {

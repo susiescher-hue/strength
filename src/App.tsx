@@ -26,7 +26,6 @@ export default function App() {
         <p className="lede">
           Two days. Gym, hotel, or home. Check a set, change a weight, keep going.
         </p>
-        <DayToggle value={store.activeDay} onChange={store.setActiveDay} />
         <p className="last-line">
           <span>
             A last done {formatStamp(store.lastCompletedA)}
@@ -37,8 +36,12 @@ export default function App() {
         </p>
       </header>
 
-      <main>
+      <div className="sticky-day">
+        <DayToggle value={store.activeDay} onChange={store.setActiveDay} />
         <p className="day-focus">{program.focus}</p>
+      </div>
+
+      <main>
         <WarmupCard
           items={program.warmup}
           open={dayState.warmupOpen}
