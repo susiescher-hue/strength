@@ -27,6 +27,7 @@ export interface Exercise {
   swap?: string
   cue?: string
   optional?: boolean
+  demoUrl?: string
 }
 
 export interface WarmupItem {
@@ -192,6 +193,7 @@ export const DAYS: Record<DayId, DayProgram> = {
         section: 'strength',
         scheme: { kind: 'repsRange', sets: 3, repsMin: 12, repsMax: 15 },
         weight: { value: 'Light band', estimated: true },
+        demoUrl: 'https://www.youtube.com/watch?v=qi2y-eI_kuI',
       },
       {
         id: 'a-hollow',
@@ -325,6 +327,7 @@ export const DAYS: Record<DayId, DayProgram> = {
         eachSide: true,
         weight: { value: 'BW', estimated: false },
         cue: 'Slow lower. Hold a wall or kettlebell for balance.',
+        demoUrl: 'https://www.youtube.com/watch?v=ElcvJ0kjt6c',
       },
       {
         id: 'b-deadbug',
@@ -333,6 +336,7 @@ export const DAYS: Record<DayId, DayProgram> = {
         scheme: { kind: 'reps', sets: 3, reps: 8 },
         eachSide: true,
         weight: { value: 'BW', estimated: false },
+        demoUrl: 'https://www.youtube.com/watch?v=4XLEnwUr1d8',
       },
       {
         id: 'b-skierg',

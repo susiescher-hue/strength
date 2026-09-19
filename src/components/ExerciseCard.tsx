@@ -44,7 +44,19 @@ export function ExerciseCard({
             {index + 1}/{total}
           </span>
         </p>
-        <h3>{exercise.name}</h3>
+        <div className="ex-title">
+          <h3>{exercise.name}</h3>
+          {exercise.demoUrl && (
+            <a
+              className="demo-link"
+              href={exercise.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Demo
+            </a>
+          )}
+        </div>
         <p className="ex-meta">
           <span>{schemeSummary(exercise)}</span>
           {exercise.rest && <span>Rest {exercise.rest}</span>}

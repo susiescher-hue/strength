@@ -13,7 +13,7 @@ Each exercise shows sets × reps (or time / meters), a prescribed weight you can
 
 Weights are seeded from current baselines (for example 25 lb dumbbell press, 16 kg swings, 12 kg goblet / clean-squat, 15 lb overhead press). Anything extrapolated — RDL, bands, face pulls, deadlift total — is labeled **estimate · editable**.
 
-There are no video embeds.
+There are no video embeds. Three moves have a **Demo** link that opens YouTube in a new tab: Band Pull-Aparts or Face Pulls (Day A), Single-Leg Calf Raise (Day B), and Dead Bug (Day B).
 
 ## Run it
 
