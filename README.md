@@ -17,7 +17,7 @@ Set **Where am I?** to **Gym** or **Home**. Home shows the swap on the card (ban
 
 This block: ~4 weeks / ~8 sessions, then progress loads.
 
-Each exercise shows sets × reps (or time / meters), a large **Tap to edit weight** field, a checkbox per set, rest when it helps, and an optional note. Warm-up is collapsible. Mark the session complete to stamp the last-done date for that day.
+Each exercise shows sets × reps (or time / meters), a large **Tap to edit weight** field, a checkbox per set, rest when it helps, and an optional note. Tap the **?** next to a name for a short form note. If a demo exists, **Watch demo** opens YouTube in a new tab — no embeds. Warm-up items have a lighter **?** too. Mark the session complete to stamp the last-done date for that day.
 
 Day A seeds: squat 12 kg (go 16 when ready), swings 16 kg (20 when snappy), incline press 25 lb (30 when solid), row 25 lb (30 when easy), OH press 15 lb (20 when ready). Estimates are labeled.
 
@@ -31,11 +31,11 @@ Day A seeds: squat 12 kg (go 16 when ready), swings 16 kg (20 when snappy), incl
 6. Incline DB Press — 4 × 8 — 25 lb each  
 7. 1-Arm DB Row — 4 × 8 each — 25 lb  
 8. Seated DB Overhead Press — 3 × 8 — 15 lb each  
-9. Band Pull-Aparts or Face Pulls — 3 × 12–15 — light band (Demo)  
+9. Band Pull-Aparts or Face Pulls — 3 × 12–15 — light band  
 10. Hollow Hold / Flutters — 3 × 20–30s — BW  
 11. Optional rower — 3 × 250 m
 
-There are no video embeds. Three moves have a **Demo** link that opens YouTube in a new tab: Band Pull-Aparts or Face Pulls (Day A), Single-Leg Calf Raise (Day B), and Dead Bug (Day B).
+There are no video embeds. Help lives on the **?** — form note on every move, **Watch demo** only when a public YouTube URL is set. Foam roll is note-only.
 
 ## Run it
 

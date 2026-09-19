@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { DayToggle } from './components/DayToggle'
 import { ExerciseCard } from './components/ExerciseCard'
+import { HelpSheet, type HelpContent } from './components/HelpSheet'
 import { LocationToggle } from './components/LocationToggle'
 import { SessionBar } from './components/SessionBar'
 import { WarmupCard } from './components/WarmupCard'
@@ -10,6 +11,7 @@ import { formatStamp } from './lib/storage'
 export default function App() {
   const store = useWorkoutStore()
   const [flash, setFlash] = useState(false)
+  const [help, setHelp] = useState<HelpContent | null>(null)
 
   useEffect(() => {
     if (!flash) return
@@ -55,6 +57,7 @@ export default function App() {
           items={program.warmup}
           open={dayState.warmupOpen}
           done={dayState.warmupDone}
+          onHelp={setHelp}
           onToggleOpen={store.toggleWarmupOpen}
           onToggleItem={store.toggleWarmupItem}
         />
@@ -68,6 +71,7 @@ export default function App() {
             weight={dayState.weights[exercise.id] ?? exercise.weight?.value ?? ''}
             note={dayState.notes[exercise.id] ?? ''}
             location={store.location}
+            onHelp={setHelp}
             onToggleSet={(setIndex) => store.toggleSet(exercise.id, setIndex)}
             onWeight={(value) => store.setWeight(exercise.id, value)}
             onNote={(value) => store.setNote(exercise.id, value)}
@@ -98,6 +102,7 @@ export default function App() {
           }
         }}
       />
+      <HelpSheet item={help} onClose={() => setHelp(null)} />
     </div>
   )
 }

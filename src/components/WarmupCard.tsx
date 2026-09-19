@@ -1,9 +1,11 @@
 import type { WarmupItem } from '../data/program'
+import { HelpButton, type HelpContent } from './HelpSheet'
 
 interface WarmupCardProps {
   items: WarmupItem[]
   open: boolean
   done: Record<string, boolean>
+  onHelp: (item: HelpContent) => void
   onToggleOpen: () => void
   onToggleItem: (id: string) => void
 }
@@ -12,6 +14,7 @@ export function WarmupCard({
   items,
   open,
   done,
+  onHelp,
   onToggleOpen,
   onToggleItem,
 }: WarmupCardProps) {
@@ -41,7 +44,7 @@ export function WarmupCard({
       {open && (
         <ul className="warmup-list">
           {items.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="warmup-item">
               <button
                 type="button"
                 className={`check-row ${done[item.id] ? 'is-done' : ''}`}
@@ -55,6 +58,17 @@ export function WarmupCard({
                   <em>{item.detail}</em>
                 </span>
               </button>
+              <HelpButton
+                name={item.name}
+                light
+                onOpen={() =>
+                  onHelp({
+                    name: item.name,
+                    help: item.help,
+                    demoUrl: item.demoUrl,
+                  })
+                }
+              />
             </li>
           ))}
         </ul>

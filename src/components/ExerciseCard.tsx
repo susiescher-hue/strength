@@ -9,6 +9,7 @@ import {
   type Exercise,
   type LocationId,
 } from '../data/program'
+import { HelpButton, type HelpContent } from './HelpSheet'
 
 interface ExerciseCardProps {
   exercise: Exercise
@@ -18,6 +19,7 @@ interface ExerciseCardProps {
   weight: string
   note: string
   location: LocationId
+  onHelp: (item: HelpContent) => void
   onToggleSet: (index: number) => void
   onWeight: (value: string) => void
   onNote: (value: string) => void
@@ -31,6 +33,7 @@ export function ExerciseCard({
   weight,
   note,
   location,
+  onHelp,
   onToggleSet,
   onWeight,
   onNote,
@@ -52,16 +55,16 @@ export function ExerciseCard({
         </p>
         <div className="ex-title">
           <h3>{exercise.name}</h3>
-          {exercise.demoUrl && (
-            <a
-              className="demo-link"
-              href={exercise.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Demo
-            </a>
-          )}
+          <HelpButton
+            name={exercise.name}
+            onOpen={() =>
+              onHelp({
+                name: exercise.name,
+                help: exercise.help,
+                demoUrl: exercise.demoUrl,
+              })
+            }
+          />
         </div>
         <p className="ex-meta">
           <span>{schemeSummary(exercise)}</span>
