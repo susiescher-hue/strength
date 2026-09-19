@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import {
+  LOCATION_LABEL,
   SECTION_LABEL,
+  locationSwap,
   setCount,
   setLabel,
   schemeSummary,
   type Exercise,
+  type LocationId,
 } from '../data/program'
 
 interface ExerciseCardProps {
@@ -14,6 +17,7 @@ interface ExerciseCardProps {
   flags: boolean[]
   weight: string
   note: string
+  location: LocationId
   onToggleSet: (index: number) => void
   onWeight: (value: string) => void
   onNote: (value: string) => void
@@ -26,6 +30,7 @@ export function ExerciseCard({
   flags,
   weight,
   note,
+  location,
   onToggleSet,
   onWeight,
   onNote,
@@ -34,6 +39,7 @@ export function ExerciseCard({
   const count = setCount(exercise.scheme)
   const done = flags.slice(0, count).filter(Boolean).length
   const showNote = noteOpen || note.length > 0
+  const swap = locationSwap(exercise, location)
 
   return (
     <article className={`card exercise ${exercise.optional ? 'is-optional' : ''}`}>
@@ -89,9 +95,9 @@ export function ExerciseCard({
       {exercise.weight && (
         <label className="weight">
           <span>
-            Weight
+            Tap to edit weight
             {exercise.weight.estimated && (
-              <mark className="est">estimate · editable</mark>
+              <mark className="est">estimate</mark>
             )}
           </span>
           <input
@@ -101,16 +107,20 @@ export function ExerciseCard({
             value={weight}
             onChange={(event) => onWeight(event.target.value)}
             placeholder={exercise.weight.value}
-            aria-label={`${exercise.name} weight`}
+            aria-label={`${exercise.name} weight, tap to edit`}
           />
           {exercise.weight.alternate && (
-            <small>Alt: {exercise.weight.alternate}</small>
+            <small>Next step: {exercise.weight.alternate}</small>
           )}
         </label>
       )}
 
       {exercise.cue && <p className="cue">{exercise.cue}</p>}
-      {exercise.swap && <p className="swap">{exercise.swap}</p>}
+      {swap && (
+        <p className="swap is-shown">
+          <strong>{LOCATION_LABEL[location]}:</strong> {swap}
+        </p>
+      )}
 
       {showNote ? (
         <label className="note">

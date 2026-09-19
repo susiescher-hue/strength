@@ -137,6 +137,44 @@ button {
   color: rgba(18, 20, 26, 0.7);
 }
 
+.location-block {
+  margin-bottom: 8px;
+}
+
+.location-label {
+  margin: 0 2px 6px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.location-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.location-toggle button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  padding: 6px 4px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.location-toggle button.is-on {
+  background: var(--accent);
+  color: var(--ink);
+}
+
 .last-line {
   display: flex;
   justify-content: space-between;
@@ -345,7 +383,7 @@ button {
 
 .sets {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
   gap: 8px;
   margin: 16px 0 14px;
 }
@@ -384,7 +422,15 @@ button {
 .weight,
 .note {
   display: grid;
-  gap: 6px;
+  gap: 8px;
+}
+
+.weight {
+  margin-top: 2px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(212, 184, 150, 0.28);
 }
 
 .weight span,
@@ -394,6 +440,10 @@ button {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.weight span {
+  color: var(--accent);
 }
 
 .est {
@@ -417,6 +467,12 @@ button {
   font-size: 1.05rem;
 }
 
+.weight input {
+  min-height: 64px;
+  font-size: 1.28rem;
+  font-weight: 700;
+}
+
 .weight input:focus,
 .note textarea:focus {
   outline: 2px solid var(--accent);
@@ -437,6 +493,34 @@ button {
   display: block;
   margin: 8px 0 0;
   font-size: 0.86rem;
+}
+
+.swap.is-shown {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #1c221c;
+  color: var(--sage-strong);
+}
+
+.swap.is-shown strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.block-note {
+  margin: 4px 4px 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--soft);
+  font-size: 0.92rem;
+  line-height: 1.4;
 }
 
 .note {

@@ -16,7 +16,7 @@ export function DayToggle({ value, onChange }: DayToggleProps) {
         onClick={() => onChange('A')}
       >
         Day A
-        <span>Upper · squat · core</span>
+        <span>Heavy upper · squat · core</span>
       </button>
       <button
         type="button"
