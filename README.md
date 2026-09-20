@@ -1,4 +1,4 @@
-# SUSIE STAYS STRONG
+# Stronger
 
 A phone-friendly Day A / Day B workout tracker for **Susie Scher**.
 
@@ -55,7 +55,7 @@ Then open `http://localhost:5173/strength/` (the app is built for GitHub Pages a
 
 ## How to use it at the gym
 
-1. Add the page to your home screen if you like (standalone PWA). The mark is a flexed bicep (💪), not a letter S — Stretch owns the S. The icon under the name **💪 Strong** is adapted from Twemoji.
+1. Add the page to your home screen if you like (standalone PWA). The mark is a flexed bicep (💪), not a letter S — Stretch owns the S. The icon under the name **💪 Stronger** is adapted from Twemoji.
 2. Toggle **Day A** or **Day B**.
 3. Set **Where am I?** to Gym or Home so home swaps show up.
 4. Open the warm-up if you want it; skip foam rolling when you are short on time.

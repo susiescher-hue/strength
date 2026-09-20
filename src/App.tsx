@@ -25,7 +25,7 @@ export default function App() {
     <div className="app">
       <header className="top">
         <p className="brand-kicker">Your sessions · gym or home</p>
-        <h1>SUSIE STAYS STRONG</h1>
+        <h1>Stronger</h1>
         <p className="lede">
           Two days. Gym or home. Check a set, change a weight, keep going.
         </p>
