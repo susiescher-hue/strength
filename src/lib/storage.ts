@@ -49,6 +49,7 @@ export function defaultState(): AppState {
     days: {
       A: defaultDayState('A'),
       B: defaultDayState('B'),
+      N: defaultDayState('N'),
     },
   }
 }
@@ -78,12 +79,17 @@ function mergeDay(day: DayId, saved: Partial<DayState> | undefined): DayState {
   }
 }
 
+function parseDayId(value: unknown): DayId {
+  if (value === 'B' || value === 'N') return value
+  return 'A'
+}
+
 export function loadState(): AppState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return defaultState()
     const parsed = JSON.parse(raw) as Partial<AppState>
-    const activeDay = parsed.activeDay === 'B' ? 'B' : 'A'
+    const activeDay = parseDayId(parsed.activeDay)
     const location = parsed.location === 'home' ? 'home' : 'gym'
     return {
       version: 1,
@@ -92,6 +98,7 @@ export function loadState(): AppState {
       days: {
         A: mergeDay('A', parsed.days?.A),
         B: mergeDay('B', parsed.days?.B),
+        N: mergeDay('N', parsed.days?.N),
       },
     }
   } catch {

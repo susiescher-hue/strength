@@ -98,16 +98,16 @@ button {
 
 .day-toggle {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  padding: 6px;
+  grid-template-columns: 1fr 1fr 1.15fr;
+  gap: 6px;
+  padding: 5px;
   border-radius: 18px;
   background: var(--surface);
   border: 1px solid var(--line);
 }
 
 .day-toggle button {
-  min-height: 56px;
+  min-height: 58px;
   border: 0;
   border-radius: 14px;
   background: transparent;
@@ -116,14 +116,14 @@ button {
   align-items: flex-start;
   justify-content: center;
   gap: 2px;
-  padding: 10px 12px;
+  padding: 8px 8px;
   text-align: left;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.92rem;
 }
 
 .day-toggle button span {
-  font-size: 0.72rem;
+  font-size: 0.64rem;
   font-weight: 500;
   color: var(--muted);
 }
@@ -175,10 +175,21 @@ button {
   color: var(--ink);
 }
 
+.nyc-gear {
+  margin: 0 2px 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #1c221c;
+  color: var(--sage-strong);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .last-line {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px 12px;
   margin: 10px 0 0;
   color: var(--muted);
   font-size: 0.78rem;

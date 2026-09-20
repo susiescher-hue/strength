@@ -1,4 +1,4 @@
-export type DayId = 'A' | 'B'
+export type DayId = 'A' | 'B' | 'N'
 export type LocationId = 'gym' | 'home'
 
 export type Scheme =
@@ -59,6 +59,16 @@ export const SECTION_LABEL: Record<Section, string> = {
 export const LOCATION_LABEL: Record<LocationId, string> = {
   gym: 'Gym',
   home: 'Home',
+}
+
+export const DAY_TABS: { id: DayId; label: string; blurb: string }[] = [
+  { id: 'A', label: 'Day A', blurb: 'Gym upper' },
+  { id: 'B', label: 'Day B', blurb: 'Gym hinge' },
+  { id: 'N', label: 'NYC home', blurb: 'KBs · TRX' },
+]
+
+export function isNycHome(day: DayId): boolean {
+  return day === 'N'
 }
 
 const HELP_FOAM =
@@ -488,6 +498,180 @@ export const DAYS: Record<DayId, DayProgram> = {
         swaps: {
           home: 'Skip. March 3 × 90s or band pulls.',
         },
+      },
+    ],
+  },
+  N: {
+    id: 'N',
+    title: 'NYC home',
+    focus: 'NYC apartment · 2×10, 2×12, 16, 20, 24 kg KBs · TRX · mat',
+    warmup: [
+      {
+        id: 'wgs',
+        name: 'World’s Greatest Stretch',
+        detail: '30 seconds each side × 1.',
+        help: HELP_WGS,
+        demoUrl: DEMO_WGS,
+      },
+      {
+        id: 'catcow',
+        name: 'Cat-cow on the mat',
+        detail: '6–8 slow rounds.',
+        help: 'On all fours, round the back on the exhale, then lift the chest and look a little forward on the inhale. Slow and easy — this is a warm-up, not a stretch contest.',
+      },
+    ],
+    exercises: [
+      {
+        id: 'n-hollow',
+        name: 'Hollow Hold',
+        section: 'core',
+        scheme: { kind: 'time', sets: 3, seconds: 25 },
+        rest: '0:30',
+        weight: { value: 'BW', estimated: false },
+        help: 'On your back, low back pressed to the floor, arms and legs long and a few inches off the ground. If the back pops up, tuck the knees or shorten the hold. Own a quiet 25 seconds.',
+        cue: 'If you have the blue handle band, you can swap to anti-rotation 3 × 8 each.',
+        demoUrl: 'https://www.youtube.com/watch?v=LlDNef_Ztsc',
+      },
+      {
+        id: 'n-chop',
+        name: 'Half-Kneeling Wood Chop',
+        section: 'core',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        rest: '1:00',
+        weight: { value: '10 kg KB', estimated: false },
+        help: 'Half-kneel with the inside knee up. Hold the 10 kg bell and chop from high-outside to low-inside without letting the ribs or hips spin. Stay stacked — this is a chop, not a twist.',
+        cue: 'Quiet hips. Last two reps should feel like a fight.',
+        demoUrl: 'https://www.youtube.com/watch?v=I4Ncb8LZntY',
+      },
+      {
+        id: 'n-swing',
+        name: 'Two-Hand KB Swing',
+        section: 'power',
+        scheme: { kind: 'reps', sets: 4, reps: 8 },
+        rest: '0:45',
+        weight: {
+          value: '16 kg',
+          estimated: false,
+          alternate: '20 kg when 16 is snappy and quiet',
+        },
+        help: 'Hinge, don’t squat. Hike the bell back, then snap the hips so it floats to about chest height. Arms are ropes — the power is from the hips. Land quiet and snappy.',
+        cue: 'Hard hip snap. 20 kg is next when 16 is easy.',
+        demoUrl: 'https://www.youtube.com/watch?v=1FjAoO5McVI',
+      },
+      {
+        id: 'n-squat',
+        name: 'Goblet Squat',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 4, reps: 8 },
+        rest: '1:30',
+        weight: {
+          value: '16 kg',
+          estimated: false,
+          alternate: '20 kg when all 8s are clean',
+        },
+        help: 'Hold the 16 kg bell at the chest, elbows down. Sit between the heels, chest tall, knees tracking the toes. Stand by pushing the floor away. Working sets of 8.',
+        cue: 'Working 8s. Add load when 16 kg is no longer hard.',
+        demoUrl: 'https://www.youtube.com/watch?v=0eW8av1WC4g',
+      },
+      {
+        id: 'n-trx-row',
+        name: 'TRX Row',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 4, reps: 8 },
+        rest: '1:00',
+        weight: { value: 'Challenging angle', estimated: true },
+        help: 'Lean back on the straps, body in one line. Pull the chest through, squeeze the shoulder blades, then lower slow. Walk the feet forward to make it harder — the last two reps should grind.',
+        cue: 'Walk the feet in until 8 is a fight.',
+        demoUrl: 'https://www.youtube.com/watch?v=N_14s8zFOms',
+      },
+      {
+        id: 'n-floor-press',
+        name: 'Floor Press',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 4, reps: 8 },
+        rest: '1:30',
+        weight: {
+          value: '2 × 12 kg',
+          estimated: false,
+          alternate: 'Single-arm 16 kg × 8 each',
+        },
+        help: 'Lie on the mat, bells at the shoulders, wrists stacked. Press up until the arms are long, then lower until the upper arms kiss the floor — no bounce. Keep the ribs down. Roll to your side to set the bells down.',
+        cue: 'Two 12s. Single-arm 16 kg × 8 each is the backup.',
+        demoUrl: 'https://www.youtube.com/watch?v=4ULa6AJcjr8',
+      },
+      {
+        id: 'n-row',
+        name: '1-Arm KB Row',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 4, reps: 8 },
+        eachSide: true,
+        rest: '1:00',
+        weight: { value: '16 kg', estimated: false },
+        help: 'Hinge or put a hand on a chair. Pull the 16 kg bell to the hip, not the shoulder. Pause a beat at the top, then lower without a shrug. Own the last reps.',
+        cue: 'Pull to the hip. Own the last reps.',
+        demoUrl: 'https://www.youtube.com/watch?v=epSR-ma7BsY',
+      },
+      {
+        id: 'n-oh-press',
+        name: '1-Arm KB Overhead Press',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        rest: '1:30',
+        weight: {
+          value: '12 kg',
+          estimated: false,
+          alternate: '10 kg if 12 is ugly',
+        },
+        help: 'Rack the bell at the shoulder, ribs down, glutes tight. Press straight up so the biceps finishes by the ear. No big backbend. Lower with control back to the rack.',
+        cue: 'Strict. Drop to 10 kg if 12 wanders.',
+        demoUrl: 'https://www.youtube.com/watch?v=gjr-QAdsq4o',
+      },
+      {
+        id: 'n-facepull',
+        name: 'TRX Face Pull',
+        section: 'strength',
+        scheme: { kind: 'repsRange', sets: 3, repsMin: 12, repsMax: 15 },
+        weight: { value: 'TRX', estimated: true },
+        help: 'Face the anchor, lean back, arms long. Pull the handles to the forehead with elbows high, then open the hands a little toward the ears. Squeeze the shoulder blades — don’t shrug. This replaces band pull-aparts.',
+        cue: 'Elbows high. No band pull-aparts in this apartment.',
+        demoUrl: 'https://www.youtube.com/watch?v=QPWImG4kJUg',
+      },
+      {
+        id: 'n-deadbug',
+        name: 'Dead Bug',
+        section: 'core',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        weight: { value: 'BW', estimated: false },
+        help: 'On your back, knees over hips, arms to the ceiling. Press the low back down, then reach one arm and the opposite leg out. Only go as far as the back stays glued. Switch sides — slow wins.',
+        demoUrl: 'https://www.youtube.com/watch?v=4XLEnwUr1d8',
+      },
+      {
+        id: 'n-birddog',
+        name: 'Bird Dog',
+        section: 'core',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        weight: { value: 'BW', estimated: false },
+        help: 'On all fours, hands under shoulders, knees under hips. Reach one arm and the opposite leg long without letting the hips or shoulders twist. Pause, then return slow. Small and quiet beats big and wobbly.',
+        demoUrl: 'https://www.youtube.com/watch?v=ZdAHe9_HeEw',
+      },
+      {
+        id: 'n-bridge',
+        name: 'Single-Leg Glute Bridge',
+        section: 'accessory',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        weight: {
+          value: 'BW',
+          estimated: false,
+          alternate: 'Light KB on the hips when BW is easy',
+        },
+        help: 'On your back, one foot planted, the other knee tucked. Drive through the planted heel until the hips are long, squeeze the glute, then lower slow. Keep the hips level. A light bell on the hips is optional.',
+        cue: 'Hips level. Optional light KB on the hips.',
+        demoUrl: 'https://www.youtube.com/watch?v=_K_di6h2-Wg',
       },
     ],
   },

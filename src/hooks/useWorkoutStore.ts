@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { DAYS, type DayId, type LocationId } from '../data/program'
 import {
   countProgress,
+  defaultDayState,
   defaultState,
   loadState,
   saveState,
@@ -15,11 +16,12 @@ function updateDay(
   day: DayId,
   patch: (current: DayState) => DayState,
 ): AppState {
+  const current = state.days[day] ?? defaultDayState(day)
   return {
     ...state,
     days: {
       ...state.days,
-      [day]: patch(state.days[day]),
+      [day]: patch(current),
     },
   }
 }
@@ -46,7 +48,11 @@ export function useWorkoutStore() {
   )
 
   const setActiveDay = useCallback((day: DayId) => {
-    setState((prev) => ({ ...prev, activeDay: day }))
+    setState((prev) => ({
+      ...prev,
+      activeDay: day,
+      location: day === 'N' ? 'home' : prev.location,
+    }))
   }, [])
 
   const setLocation = useCallback((location: LocationId) => {
@@ -141,6 +147,7 @@ export function useWorkoutStore() {
     progress,
     lastCompletedA: state.days.A.lastCompleted,
     lastCompletedB: state.days.B.lastCompleted,
+    lastCompletedN: state.days.N?.lastCompleted ?? null,
     location: state.location,
     setActiveDay,
     setLocation,

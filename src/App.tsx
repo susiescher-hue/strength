@@ -5,6 +5,7 @@ import { HelpSheet, type HelpContent } from './components/HelpSheet'
 import { LocationToggle } from './components/LocationToggle'
 import { SessionBar } from './components/SessionBar'
 import { WarmupCard } from './components/WarmupCard'
+import { isNycHome } from './data/program'
 import { useWorkoutStore } from './hooks/useWorkoutStore'
 import { formatStamp } from './lib/storage'
 
@@ -24,23 +25,26 @@ export default function App() {
   return (
     <div className="app">
       <header className="top">
-        <p className="brand-kicker">Your sessions · gym or home</p>
+        <p className="brand-kicker">Your sessions · gym or NYC home</p>
         <h1>Stronger</h1>
         <p className="lede">
-          Two days. Gym or home. Check a set, change a weight, keep going.
+          Day A, Day B, or NYC home. Check a set, change a weight, keep going.
         </p>
         <p className="last-line">
-          <span>
-            A last done {formatStamp(store.lastCompletedA)}
-          </span>
-          <span>
-            B last done {formatStamp(store.lastCompletedB)}
-          </span>
+          <span>A {formatStamp(store.lastCompletedA)}</span>
+          <span>B {formatStamp(store.lastCompletedB)}</span>
+          <span>NYC {formatStamp(store.lastCompletedN)}</span>
         </p>
       </header>
 
       <div className="sticky-day">
-        <LocationToggle value={store.location} onChange={store.setLocation} />
+        {isNycHome(store.activeDay) ? (
+          <p className="nyc-gear">
+            NYC apartment · KBs 2×10, 2×12, 16, 20, 24 kg · TRX · mat
+          </p>
+        ) : (
+          <LocationToggle value={store.location} onChange={store.setLocation} />
+        )}
         <DayToggle
           value={store.activeDay}
           onChange={(day) => {

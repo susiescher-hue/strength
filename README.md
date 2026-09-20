@@ -1,19 +1,20 @@
 # Stronger
 
-A phone-friendly Day A / Day B workout tracker for **Susie Scher**.
+A phone-friendly Day A / Day B / NYC home workout tracker for **Susie Scher**.
 
 **On your phone (no install):** [https://susiescher-hue.github.io/strength/](https://susiescher-hue.github.io/strength/)
 
-Open that link at a regular gym or at home. Two sessions only. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
+Open that link at a regular gym or in the NYC apartment. Three sessions. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
 
 If the link 404s the first time, enable Pages once: repo **Settings → Pages → Source: GitHub Actions**. This repo is private today — if GitHub blocks Pages, make the repo **public** (Settings → General → Danger zone) so the phone URL can go live. The site itself is still just the workout tracker.
 
 ## What it tracks
 
-- **Day A** — heavy upper, squat, and core. Working sets of ~8.
-- **Day B** — hinge, single-leg / lateral work for running and ski season, and pull
+- **Day A** — gym: heavy upper, squat, and core. Working sets of ~8.
+- **Day B** — gym: hinge, single-leg / lateral work for running and ski season, and pull
+- **NYC home** — apartment session on her KBs (2×10, 2×12, 16, 20, 24 kg), TRX, and a mat. No band pull-aparts.
 
-Set **Where am I?** to **Gym** or **Home**. Home shows the swap on the card (band instead of cable, DB instead of KB, skip SkiErg/rower, and so on). The day stays on screen. This app is for her own gym or home sessions — not Body Space trainer sessions.
+On Day A / Day B, set **Where am I?** to **Gym** or **Home**. Home shows the swap on the card (band instead of cable, DB instead of KB, skip SkiErg/rower, and so on). **NYC home** is its own programmed day — the location toggle hides and the apartment gear list shows instead. This app is for her own gym or home sessions — not Body Space trainer sessions.
 
 This block: ~4 weeks / ~8 sessions, then progress loads.
 
@@ -37,6 +38,21 @@ Day A seeds: squat 12 kg (go 16 when ready), swings 16 kg (20 when snappy), incl
 
 There are no video embeds. Help lives on the **?** — form note on every move, **Watch demo** only when a public YouTube URL is set. Foam roll is note-only.
 
+### NYC home (apartment)
+
+1. Hollow Hold — 3 × 25s — BW (blue-band anti-rotation 3 × 8 each is the swap)
+2. Half-Kneeling Wood Chop — 3 × 8 each — 10 kg KB  
+3. Two-Hand KB Swing — 4 × 8 — 16 kg  
+4. Goblet Squat — 4 × 8 — 16 kg  
+5. TRX Row — 4 × 8 — challenging angle  
+6. Floor Press — 4 × 8 — 2 × 12 kg (single-arm 16 kg × 8 each is the backup)  
+7. 1-Arm KB Row — 4 × 8 each — 16 kg  
+8. 1-Arm KB Overhead Press — 3 × 8 each — 12 kg (10 kg if 12 is ugly)  
+9. TRX Face Pull — 3 × 12–15  
+10. Dead Bug — 3 × 8 each  
+11. Bird Dog — 3 × 8 each  
+12. Single-Leg Glute Bridge — 3 × 8 each — BW, optional light KB on hips
+
 ## Run it
 
 ```bash
@@ -56,8 +72,8 @@ Then open `http://localhost:5173/strength/` (the app is built for GitHub Pages a
 ## How to use it at the gym
 
 1. Add the page to your home screen if you like (standalone PWA). The mark is a flexed bicep (💪), not a letter S — Stretch owns the S. The icon under the name **💪 Stronger** is adapted from Twemoji.
-2. Toggle **Day A** or **Day B**.
-3. Set **Where am I?** to Gym or Home so home swaps show up.
+2. Toggle **Day A**, **Day B**, or **NYC home**.
+3. On Day A / Day B, set **Where am I?** to Gym or Home so home swaps show up. NYC home is already the apartment session.
 4. Open the warm-up if you want it; skip foam rolling when you are short on time.
 5. Tap a set when it is done. Tap the big weight field to change the load.
 6. **Mark Day complete** when you are finished. Use **Reset sets** next time — weights and notes stay.

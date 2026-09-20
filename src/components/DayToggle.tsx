@@ -1,4 +1,4 @@
-import type { DayId } from '../data/program'
+import { DAY_TABS, type DayId } from '../data/program'
 
 interface DayToggleProps {
   value: DayId
@@ -8,26 +8,19 @@ interface DayToggleProps {
 export function DayToggle({ value, onChange }: DayToggleProps) {
   return (
     <div className="day-toggle" role="tablist" aria-label="Workout day">
-      <button
-        type="button"
-        role="tab"
-        aria-selected={value === 'A'}
-        className={value === 'A' ? 'is-on' : ''}
-        onClick={() => onChange('A')}
-      >
-        Day A
-        <span>Heavy upper · squat · core</span>
-      </button>
-      <button
-        type="button"
-        role="tab"
-        aria-selected={value === 'B'}
-        className={value === 'B' ? 'is-on' : ''}
-        onClick={() => onChange('B')}
-      >
-        Day B
-        <span>Hinge · single-leg · pull</span>
-      </button>
+      {DAY_TABS.map((tab) => (
+        <button
+          key={tab.id}
+          type="button"
+          role="tab"
+          aria-selected={value === tab.id}
+          className={value === tab.id ? 'is-on' : ''}
+          onClick={() => onChange(tab.id)}
+        >
+          {tab.label}
+          <span>{tab.blurb}</span>
+        </button>
+      ))}
     </div>
   )
 }
