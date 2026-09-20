@@ -1,20 +1,20 @@
 # Stronger
 
-A phone-friendly Day A / Day B / NYC home workout tracker for **Susie Scher**.
+A phone-friendly Gym / NYC home workout tracker for **Susie Scher**.
 
 **On your phone (no install):** [https://susiescher-hue.github.io/strength/](https://susiescher-hue.github.io/strength/)
 
-Open that link at a regular gym or in the NYC apartment. Three sessions. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
+Open that link at a regular gym or in the NYC apartment. Two places: **Gym** (Day A or Day B) and **NYC home**. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
 
 If the link 404s the first time, enable Pages once: repo **Settings → Pages → Source: GitHub Actions**. This repo is private today — if GitHub blocks Pages, make the repo **public** (Settings → General → Danger zone) so the phone URL can go live. The site itself is still just the workout tracker.
 
 ## What it tracks
 
-- **Day A** — gym: heavy upper, squat, and core. Working sets of ~8.
-- **Day B** — gym: hinge, single-leg / lateral work for running and ski season, and pull
-- **NYC home** — apartment session on her KBs (2×10, 2×12, 16, 20, 24 kg), TRX, and a mat. No band pull-aparts.
+- **Gym → Day A** — heavy upper, squat, and core. Working sets of ~8.
+- **Gym → Day B** — hinge, single-leg / lateral work for running and ski season, and pull
+- **NYC home** — apartment session on her KBs (2×10, 2×12, 16, 20, 24 kg), TRX, and a mat. No band pull-aparts. No Day A/B under this tab.
 
-On Day A / Day B, set **Where am I?** to **Gym** or **Home**. Home shows the swap on the card (band instead of cable, DB instead of KB, skip SkiErg/rower, and so on). **NYC home** is its own programmed day — the location toggle hides and the apartment gear list shows instead. This app is for her own gym or home sessions — not Body Space trainer sessions.
+Top tabs are only **Gym** and **NYC home**. Day A / Day B are sub-tabs under Gym. This app is for her own gym or home sessions — not Body Space trainer sessions.
 
 This block: ~4 weeks / ~8 sessions, then progress loads.
 
@@ -72,8 +72,8 @@ Then open `http://localhost:5173/strength/` (the app is built for GitHub Pages a
 ## How to use it at the gym
 
 1. Add the page to your home screen if you like (standalone PWA). The mark is a flexed bicep (💪), not a letter S — Stretch owns the S. The icon under the name **💪 Stronger** is adapted from Twemoji.
-2. Toggle **Day A**, **Day B**, or **NYC home**.
-3. On Day A / Day B, set **Where am I?** to Gym or Home so home swaps show up. NYC home is already the apartment session.
+2. Toggle **Gym** or **NYC home**.
+3. On Gym, pick **Day A** or **Day B**. NYC home has no Day A/B — it is the apartment session.
 4. Open the warm-up if you want it; skip foam rolling when you are short on time.
 5. Tap a set when it is done. Tap the big weight field to change the load.
 6. **Mark Day complete** when you are finished. Use **Reset sets** next time — weights and notes stay.

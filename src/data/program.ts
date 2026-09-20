@@ -61,14 +61,19 @@ export const LOCATION_LABEL: Record<LocationId, string> = {
   home: 'Home',
 }
 
-export const DAY_TABS: { id: DayId; label: string; blurb: string }[] = [
-  { id: 'A', label: 'Day A', blurb: 'Gym upper' },
-  { id: 'B', label: 'Day B', blurb: 'Gym hinge' },
-  { id: 'N', label: 'NYC home', blurb: 'KBs · TRX' },
+export const GYM_DAYS: { id: 'A' | 'B'; label: string; blurb: string }[] = [
+  { id: 'A', label: 'Day A', blurb: 'Heavy upper · squat · core' },
+  { id: 'B', label: 'Day B', blurb: 'Hinge · single-leg · pull' },
 ]
+
+export type PlaceId = 'gym' | 'nyc'
 
 export function isNycHome(day: DayId): boolean {
   return day === 'N'
+}
+
+export function placeFromDay(day: DayId): PlaceId {
+  return day === 'N' ? 'nyc' : 'gym'
 }
 
 const HELP_FOAM =

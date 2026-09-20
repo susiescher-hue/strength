@@ -14,6 +14,7 @@ export interface DayState {
 export interface AppState {
   version: 1
   activeDay: DayId
+  lastGymDay: 'A' | 'B'
   location: LocationId
   days: Record<DayId, DayState>
 }
@@ -45,6 +46,7 @@ export function defaultState(): AppState {
   return {
     version: 1,
     activeDay: 'A',
+    lastGymDay: 'A',
     location: 'gym',
     days: {
       A: defaultDayState('A'),
@@ -84,16 +86,23 @@ function parseDayId(value: unknown): DayId {
   return 'A'
 }
 
+function parseGymDay(value: unknown, activeDay: DayId): 'A' | 'B' {
+  if (value === 'B' || activeDay === 'B') return 'B'
+  return 'A'
+}
+
 export function loadState(): AppState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return defaultState()
     const parsed = JSON.parse(raw) as Partial<AppState>
     const activeDay = parseDayId(parsed.activeDay)
-    const location = parsed.location === 'home' ? 'home' : 'gym'
+    const lastGymDay = parseGymDay(parsed.lastGymDay, activeDay)
+    const location = activeDay === 'N' ? 'home' : 'gym'
     return {
       version: 1,
       activeDay,
+      lastGymDay,
       location,
       days: {
         A: mergeDay('A', parsed.days?.A),

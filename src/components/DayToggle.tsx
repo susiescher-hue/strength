@@ -1,14 +1,14 @@
-import { DAY_TABS, type DayId } from '../data/program'
+import { GYM_DAYS } from '../data/program'
 
 interface DayToggleProps {
-  value: DayId
-  onChange: (day: DayId) => void
+  value: 'A' | 'B'
+  onChange: (day: 'A' | 'B') => void
 }
 
 export function DayToggle({ value, onChange }: DayToggleProps) {
   return (
-    <div className="day-toggle" role="tablist" aria-label="Workout day">
-      {DAY_TABS.map((tab) => (
+    <div className="day-toggle" role="tablist" aria-label="Gym day">
+      {GYM_DAYS.map((tab) => (
         <button
           key={tab.id}
           type="button"

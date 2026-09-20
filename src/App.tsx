@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { DayToggle } from './components/DayToggle'
 import { ExerciseCard } from './components/ExerciseCard'
 import { HelpSheet, type HelpContent } from './components/HelpSheet'
-import { LocationToggle } from './components/LocationToggle'
+import { PlaceToggle } from './components/PlaceToggle'
 import { SessionBar } from './components/SessionBar'
 import { WarmupCard } from './components/WarmupCard'
-import { isNycHome } from './data/program'
+import { isNycHome, placeFromDay } from './data/program'
 import { useWorkoutStore } from './hooks/useWorkoutStore'
 import { formatStamp } from './lib/storage'
 
@@ -21,6 +21,7 @@ export default function App() {
   }, [flash])
 
   const { program, dayState, progress } = store
+  const nyc = isNycHome(store.activeDay)
 
   return (
     <div className="app">
@@ -28,7 +29,7 @@ export default function App() {
         <p className="brand-kicker">Your sessions · gym or NYC home</p>
         <h1>Stronger</h1>
         <p className="lede">
-          Day A, Day B, or NYC home. Check a set, change a weight, keep going.
+          Gym or NYC home. Check a set, change a weight, keep going.
         </p>
         <p className="last-line">
           <span>A {formatStamp(store.lastCompletedA)}</span>
@@ -38,21 +39,27 @@ export default function App() {
       </header>
 
       <div className="sticky-day">
-        {isNycHome(store.activeDay) ? (
+        <PlaceToggle
+          value={placeFromDay(store.activeDay)}
+          onChange={(place) => {
+            setFlash(false)
+            store.setPlace(place)
+            window.scrollTo({ top: 0, behavior: 'auto' })
+          }}
+        />
+        {nyc ? (
           <p className="nyc-gear">
             NYC apartment · KBs 2×10, 2×12, 16, 20, 24 kg · TRX · mat
           </p>
         ) : (
-          <LocationToggle value={store.location} onChange={store.setLocation} />
+          <DayToggle
+            value={store.activeDay === 'B' ? 'B' : 'A'}
+            onChange={(day) => {
+              setFlash(false)
+              store.setActiveDay(day)
+            }}
+          />
         )}
-        <DayToggle
-          value={store.activeDay}
-          onChange={(day) => {
-            setFlash(false)
-            store.setActiveDay(day)
-            window.scrollTo({ top: 0, behavior: 'auto' })
-          }}
-        />
         <p className="day-focus">{program.focus}</p>
       </div>
 
