@@ -504,7 +504,7 @@ export const DAYS: Record<DayId, DayProgram> = {
   N: {
     id: 'N',
     title: 'NYC home',
-    focus: 'NYC apartment · 2×10, 2×12, 16, 20, 24 kg KBs · TRX · mat',
+    focus: 'Apartment strength — KBs + TRX',
     warmup: [
       {
         id: 'wgs',
