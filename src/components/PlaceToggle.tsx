@@ -16,7 +16,7 @@ export function PlaceToggle({ value, onChange }: PlaceToggleProps) {
         onClick={() => onChange('gym')}
       >
         Gym
-        <span>Day A · Day B</span>
+        <span>Days A · B · C</span>
       </button>
       <button
         type="button"

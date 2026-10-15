@@ -1,4 +1,4 @@
-import { DAYS, setCount, type DayId, type LocationId } from '../data/program'
+import { DAYS, setCount, type DayId, type GymDayId, type LocationId } from '../data/program'
 
 export const STORAGE_KEY = 'susie-strength-v1'
 
@@ -14,7 +14,7 @@ export interface DayState {
 export interface AppState {
   version: 1
   activeDay: DayId
-  lastGymDay: 'A' | 'B'
+  lastGymDay: GymDayId
   location: LocationId
   days: Record<DayId, DayState>
 }
@@ -51,6 +51,7 @@ export function defaultState(): AppState {
     days: {
       A: defaultDayState('A'),
       B: defaultDayState('B'),
+      C: defaultDayState('C'),
       N: defaultDayState('N'),
     },
   }
@@ -82,12 +83,13 @@ function mergeDay(day: DayId, saved: Partial<DayState> | undefined): DayState {
 }
 
 function parseDayId(value: unknown): DayId {
-  if (value === 'B' || value === 'N') return value
+  if (value === 'B' || value === 'C' || value === 'N') return value
   return 'A'
 }
 
-function parseGymDay(value: unknown, activeDay: DayId): 'A' | 'B' {
-  if (value === 'B' || activeDay === 'B') return 'B'
+function parseGymDay(value: unknown, activeDay: DayId): GymDayId {
+  if (value === 'A' || value === 'B' || value === 'C') return value
+  if (activeDay === 'B' || activeDay === 'C') return activeDay
   return 'A'
 }
 
@@ -107,6 +109,7 @@ export function loadState(): AppState {
       days: {
         A: mergeDay('A', parsed.days?.A),
         B: mergeDay('B', parsed.days?.B),
+        C: mergeDay('C', parsed.days?.C),
         N: mergeDay('N', parsed.days?.N),
       },
     }

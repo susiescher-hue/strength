@@ -99,7 +99,6 @@ button {
 .place-toggle,
 .day-toggle {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 8px;
   padding: 6px;
   border-radius: 18px;
@@ -108,7 +107,12 @@ button {
 }
 
 .place-toggle {
+  grid-template-columns: 1fr 1fr;
   margin-bottom: 8px;
+}
+
+.day-toggle {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .place-toggle button,
@@ -130,8 +134,9 @@ button {
 
 .day-toggle button {
   min-height: 52px;
-  font-size: 0.95rem;
-  padding: 8px 10px;
+  min-width: 0;
+  font-size: 0.92rem;
+  padding: 8px 6px;
 }
 
 .place-toggle button span,
@@ -142,7 +147,8 @@ button {
 }
 
 .day-toggle button span {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
+  line-height: 1.25;
 }
 
 .place-toggle button.is-on,

@@ -4,7 +4,7 @@ A phone-friendly Gym / NYC home workout tracker for **Susie Scher**.
 
 **On your phone (no install):** [https://susiescher-hue.github.io/strength/](https://susiescher-hue.github.io/strength/)
 
-Open that link at a regular gym or in the NYC apartment. Two places: **Gym** (Day A or Day B) and **NYC home**. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
+Open that link at a regular gym or in the NYC apartment. Two places: **Gym** (Day A, Day B, or Day C) and **NYC home**. No login. Checkmarks, notes, and weight edits stay on this device in `localStorage`.
 
 If the link 404s the first time, enable Pages once: repo **Settings → Pages → Source: GitHub Actions**. This repo is private today — if GitHub blocks Pages, make the repo **public** (Settings → General → Danger zone) so the phone URL can go live. The site itself is still just the workout tracker.
 
@@ -12,9 +12,10 @@ If the link 404s the first time, enable Pages once: repo **Settings → Pages �
 
 - **Gym → Day A** — heavy upper, squat, and core. Working sets of ~8.
 - **Gym → Day B** — hinge, single-leg / lateral work for running and ski season, and pull
-- **NYC home** — apartment session on her KBs (2×10, 2×12, 16, 20, 24 kg), TRX, and a mat. No band pull-aparts. No Day A/B under this tab.
+- **Gym → Day C** — mixed carry, offset-stance hinge, lateral slide, and a short rower interval
+- **NYC home** — apartment session on her KBs (2×10, 2×12, 16, 20, 24 kg), TRX, and a mat. No band pull-aparts. No Day A/B/C under this tab.
 
-Top tabs are only **Gym** and **NYC home**. Day A / Day B are sub-tabs under Gym. This app is for her own gym or home sessions — not Body Space trainer sessions.
+Top tabs are only **Gym** and **NYC home**. Day A / Day B / Day C are sub-tabs under Gym. This app is for her own gym or home sessions — not Body Space trainer sessions.
 
 This block: ~4 weeks / ~8 sessions, then progress loads.
 
@@ -37,6 +38,22 @@ Day A seeds: squat 12 kg (go 16 when ready), swings 16 kg (20 when snappy), incl
 11. Optional rower — 3 × 250 m
 
 There are no video embeds. Help lives on the **?** — form note on every move, **Watch demo** only when a public YouTube URL is set. Foam roll is note-only.
+
+### Day C
+
+Same gym warm-up as Day A (foam roll, World’s Greatest Stretch), then:
+
+1. Mixed Carry (OH & Racked) — 3 × 8 — KB pair  
+2. Copenhagen Plank — Short Lever — 3 × 8 each — rest 1:00 — BW  
+3. 2 KB Swings — 3 × 8 — 10 kg each  
+4. Kettlebell Offset Stance Deadlift — 3 × 10 each — 20 kg — rest 0:30  
+5. Banded X Pulldown — 3 × 6 — band — rest 0:30  
+6. Lateral Lunge (Slide) — 3 × 10 each — 14 kg  
+7. Incline Bench Press — 3 × 8 — 20 lb — rest 1:00  
+8. SB 1-Leg SHELC — 3 × 8 each — BW  
+9. Jam Ball Side Toss — 3 × 8 each — jam ball  
+10. Rower — 3 × 0:30 / ~250 m — rest 0:30  
+11. Toe Touch to Leg Lower — 3 × 8 — light KB — rest 0:30  
 
 ### NYC home (apartment)
 
@@ -73,7 +90,7 @@ Then open `http://localhost:5173/strength/` (the app is built for GitHub Pages a
 
 1. Add the page to your home screen if you like (standalone PWA). The mark is a flexed bicep (💪), not a letter S — Stretch owns the S. The icon under the name **💪 Stronger** is adapted from Twemoji.
 2. Toggle **Gym** or **NYC home**.
-3. On Gym, pick **Day A** or **Day B**. NYC home has no Day A/B — it is the apartment session.
+3. On Gym, pick **Day A**, **Day B**, or **Day C**. NYC home has no day sub-tabs — it is the apartment session.
 4. Open the warm-up if you want it; skip foam rolling when you are short on time.
 5. Tap a set when it is done. Tap the big weight field to change the load.
 6. **Mark Day complete** when you are finished. Use **Reset sets** next time — weights and notes stay.

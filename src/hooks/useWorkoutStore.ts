@@ -51,7 +51,7 @@ export function useWorkoutStore() {
     setState((prev) => ({
       ...prev,
       activeDay: day,
-      lastGymDay: day === 'B' ? 'B' : day === 'A' ? 'A' : prev.lastGymDay,
+      lastGymDay: day === 'A' || day === 'B' || day === 'C' ? day : prev.lastGymDay,
       location: day === 'N' ? 'home' : 'gym',
     }))
   }, [])
@@ -60,7 +60,9 @@ export function useWorkoutStore() {
     setState((prev) => {
       if (place === 'nyc') {
         const lastGymDay =
-          prev.activeDay === 'B' ? 'B' : prev.activeDay === 'A' ? 'A' : prev.lastGymDay
+          prev.activeDay === 'A' || prev.activeDay === 'B' || prev.activeDay === 'C'
+            ? prev.activeDay
+            : prev.lastGymDay
         return {
           ...prev,
           activeDay: 'N',
@@ -70,7 +72,7 @@ export function useWorkoutStore() {
       }
       return {
         ...prev,
-        activeDay: prev.lastGymDay === 'B' ? 'B' : 'A',
+        activeDay: prev.lastGymDay,
         location: 'gym',
       }
     })
@@ -164,6 +166,7 @@ export function useWorkoutStore() {
     progress,
     lastCompletedA: state.days.A.lastCompleted,
     lastCompletedB: state.days.B.lastCompleted,
+    lastCompletedC: state.days.C?.lastCompleted ?? null,
     lastCompletedN: state.days.N?.lastCompleted ?? null,
     location: state.location,
     setActiveDay,

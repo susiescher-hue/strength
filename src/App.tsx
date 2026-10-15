@@ -34,6 +34,7 @@ export default function App() {
         <p className="last-line">
           <span>A {formatStamp(store.lastCompletedA)}</span>
           <span>B {formatStamp(store.lastCompletedB)}</span>
+          <span>C {formatStamp(store.lastCompletedC)}</span>
           <span>NYC {formatStamp(store.lastCompletedN)}</span>
         </p>
       </header>
@@ -53,7 +54,7 @@ export default function App() {
           </p>
         ) : (
           <DayToggle
-            value={store.activeDay === 'B' ? 'B' : 'A'}
+            value={store.activeDay === 'B' || store.activeDay === 'C' ? store.activeDay : 'A'}
             onChange={(day) => {
               setFlash(false)
               store.setActiveDay(day)

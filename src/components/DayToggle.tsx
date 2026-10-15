@@ -1,8 +1,8 @@
-import { GYM_DAYS } from '../data/program'
+import { GYM_DAYS, type GymDayId } from '../data/program'
 
 interface DayToggleProps {
-  value: 'A' | 'B'
-  onChange: (day: 'A' | 'B') => void
+  value: GymDayId
+  onChange: (day: GymDayId) => void
 }
 
 export function DayToggle({ value, onChange }: DayToggleProps) {

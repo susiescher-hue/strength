@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#12141a",
   "theme_color": "#12141a",
-  "description": "Day A / Day B strength tracker for gym and home",
+  "description": "Day A / Day B / Day C strength tracker for gym and home",
   "icons": [
     {
       "src": "/strength/favicon.svg",

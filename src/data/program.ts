@@ -1,4 +1,5 @@
-export type DayId = 'A' | 'B' | 'N'
+export type DayId = 'A' | 'B' | 'C' | 'N'
+export type GymDayId = 'A' | 'B' | 'C'
 export type LocationId = 'gym' | 'home'
 
 export type Scheme =
@@ -8,6 +9,7 @@ export type Scheme =
   | { kind: 'time'; sets: number; seconds: number }
   | { kind: 'timeRange'; sets: number; secondsMin: number; secondsMax: number }
   | { kind: 'distance'; sets: number; meters: number }
+  | { kind: 'timeMeters'; sets: number; seconds: number; meters: number }
 
 export type Section = 'core' | 'power' | 'strength' | 'accessory' | 'condition'
 
@@ -61,9 +63,10 @@ export const LOCATION_LABEL: Record<LocationId, string> = {
   home: 'Home',
 }
 
-export const GYM_DAYS: { id: 'A' | 'B'; label: string; blurb: string }[] = [
+export const GYM_DAYS: { id: GymDayId; label: string; blurb: string }[] = [
   { id: 'A', label: 'Day A', blurb: 'Heavy upper · squat · core' },
   { id: 'B', label: 'Day B', blurb: 'Hinge · single-leg · pull' },
+  { id: 'C', label: 'Day C', blurb: 'Carry · offset · lateral' },
 ]
 
 export type PlaceId = 'gym' | 'nyc'
@@ -97,6 +100,12 @@ export function setCount(scheme: Scheme): number {
   return scheme.sets
 }
 
+function clockLabel(seconds: number): string {
+  const minutes = Math.floor(seconds / 60)
+  const remainder = seconds % 60
+  return `${minutes}:${String(remainder).padStart(2, '0')}`
+}
+
 export function setLabel(scheme: Scheme, index: number): string {
   switch (scheme.kind) {
     case 'reps':
@@ -111,6 +120,8 @@ export function setLabel(scheme: Scheme, index: number): string {
       return `${scheme.secondsMin}–${scheme.secondsMax}s`
     case 'distance':
       return `${scheme.meters}m`
+    case 'timeMeters':
+      return clockLabel(scheme.seconds)
   }
 }
 
@@ -130,6 +141,8 @@ export function schemeSummary(exercise: Exercise): string {
       return `${scheme.sets} × ${scheme.secondsMin}–${scheme.secondsMax}s${side}`
     case 'distance':
       return `${scheme.sets} × ${scheme.meters}m`
+    case 'timeMeters':
+      return `${scheme.sets} × ${clockLabel(scheme.seconds)} / ~${scheme.meters} m`
   }
 }
 
@@ -503,6 +516,141 @@ export const DAYS: Record<DayId, DayProgram> = {
         swaps: {
           home: 'Skip. March 3 × 90s or band pulls.',
         },
+      },
+    ],
+  },
+  C: {
+    id: 'C',
+    title: 'Day C',
+    focus: 'Carry, offset hinge, and lateral',
+    warmup: [
+      {
+        id: 'foam',
+        name: 'Foam roll',
+        detail: 'Hamstrings, quads, rhomboids — or skip if you are short on time.',
+        help: HELP_FOAM,
+      },
+      {
+        id: 'wgs',
+        name: 'World’s Greatest Stretch',
+        detail: '30 seconds each side × 1.',
+        help: HELP_WGS,
+        demoUrl: DEMO_WGS,
+      },
+    ],
+    exercises: [
+      {
+        id: 'c-carry',
+        name: 'Mixed Carry (OH & Racked)',
+        section: 'core',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        weight: { value: 'KB pair', estimated: true },
+        help: 'Lock one bell out overhead and park the other in the front rack. Walk tall — ribs down, overhead arm straight, racked elbow tight to the ribs. Switch which arm is overhead each set. Short steps, quiet shoulders.',
+        cue: 'Switch the overhead arm each set.',
+        demoUrl: 'https://www.youtube.com/watch?v=YgQICLEwOpM',
+      },
+      {
+        id: 'c-copenhagen',
+        name: 'Copenhagen Plank — Short Lever',
+        section: 'core',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        rest: '1:00',
+        weight: { value: 'BW', estimated: false },
+        help: 'Side plank with the top knee on a bench — short lever, not the ankle. Press that knee down and lift the hips into a straight line, then lower with control. The inner thigh of the top leg does the work. Eight each side.',
+        demoUrl: 'https://www.youtube.com/watch?v=ObNdHFfcUko',
+      },
+      {
+        id: 'c-swing',
+        name: '2 KB Swings',
+        section: 'power',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        weight: { value: '10 kg each', estimated: false },
+        help: 'A bell in each hand. Feet a little wider than a one-bell swing, toes out a bit. Hike both bells back, then snap the hips so they float to about chest height. Arms are ropes. 10 kg each — quiet and snappy.',
+        cue: 'Hard hip snap. Don’t squat it.',
+        demoUrl: 'https://www.youtube.com/watch?v=Tr4yzNiqOWY',
+      },
+      {
+        id: 'c-offset-dl',
+        name: 'Kettlebell Offset Stance Deadlift',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 10 },
+        eachSide: true,
+        rest: '0:30',
+        weight: { value: '20 kg', estimated: false },
+        help: 'Stagger the stance — one foot a half-step forward, most of the weight on that leg, back toes down for balance. Hinge the 20 kg bell down the front leg, then stand tall. Switch the front foot. Soft knees, long back.',
+        demoUrl: 'https://www.youtube.com/watch?v=IXzdtAeM1qk',
+      },
+      {
+        id: 'c-x-pulldown',
+        name: 'Banded X Pulldown',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 6 },
+        rest: '0:30',
+        weight: { value: 'Band', estimated: true },
+        help: 'Anchor a band high and cross it into an X — right hand takes the left side. Tall kneeling or sitting. Drive the elbows down toward the pockets, thumbs turning up at the bottom. Ribs stay down. Slow on the way up. A hard 6.',
+        demoUrl: 'https://www.youtube.com/watch?v=4m6DZNw-1PU',
+      },
+      {
+        id: 'c-lateral',
+        name: 'Lateral Lunge (Slide)',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 10 },
+        eachSide: true,
+        weight: { value: '14 kg', estimated: false },
+        help: 'Hold the 14 kg bell at the chest, one foot on a slider. Slide that foot out and sit into the standing leg — knee tracks the toes, sliding leg stays long. Pull the foot back in with the inner thigh. Ten each side.',
+        demoUrl: 'https://www.youtube.com/watch?v=bN9sXaI7tdg',
+      },
+      {
+        id: 'c-incline',
+        name: 'Incline Bench Press',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        rest: '1:00',
+        weight: { value: '20 lb', estimated: false },
+        help: 'Slight incline. Lower the 20 lb to the upper chest, wrists stacked, then press up. Feet stay planted and the ribs stay down. Last reps can grind — don’t bounce.',
+        cue: 'Last 2 reps should grind. Don’t bounce.',
+        demoUrl: 'https://www.youtube.com/watch?v=qSmo-8QapTg',
+      },
+      {
+        id: 'c-shelc',
+        name: 'SB 1-Leg SHELC',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        weight: { value: 'BW', estimated: false },
+        help: 'On your back, one heel on a stability ball and the other leg up. Lift the hips, curl the ball in with the heel, then roll it back out while the hips stay high and level. That is a single-leg hip extension plus a leg curl. Eight each side.',
+        demoUrl: 'https://www.youtube.com/watch?v=RjX9U56qRO4',
+      },
+      {
+        id: 'c-toss',
+        name: 'Jam Ball Side Toss',
+        section: 'strength',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        eachSide: true,
+        weight: { value: 'Jam ball', estimated: false },
+        help: 'Stand side-on to a wall, jam ball at the back hip. Turn the hip away, then rotate and toss the ball into the wall. Catch and reset. The hips throw it — the arms just let go. Eight each side. Step back if it rebounds hot.',
+        demoUrl: 'https://www.youtube.com/watch?v=YfI7NTlMrlw',
+      },
+      {
+        id: 'c-rower',
+        name: 'Rower',
+        section: 'condition',
+        scheme: { kind: 'timeMeters', sets: 3, seconds: 30, meters: 250 },
+        rest: '0:30',
+        weight: { value: 'Easy–moderate', estimated: true },
+        help: 'Strap the feet, sit tall, then drive the legs, swing the body, then pull. Recover in reverse: arms, body, legs. Thirty seconds, about 250 m, then rest 30. Smooth, not a race.',
+        demoUrl: 'https://www.youtube.com/watch?v=QGqls1jhTUM',
+      },
+      {
+        id: 'c-toe-touch',
+        name: 'Toe Touch to Leg Lower',
+        section: 'condition',
+        scheme: { kind: 'reps', sets: 3, reps: 8 },
+        rest: '0:30',
+        weight: { value: 'Light KB', estimated: true },
+        help: 'On your back, legs toward the ceiling, a kettlebell in both hands. Crunch up and reach the bell toward the toes, then lower the legs only as far as the low back stays down. Bring the legs back, then the shoulders. Eight slow reps.',
+        demoUrl: 'https://www.youtube.com/watch?v=S9kcr8UWU3o',
       },
     ],
   },
